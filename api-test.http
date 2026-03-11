@@ -1,0 +1,59 @@
+### 1. Create Producer
+POST http://localhost:8080/api/producers
+Content-Type: application/json
+
+{
+  "name": "Apple"
+}
+
+### 2. Create Product with Attributes
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "MacBook Pro 16",
+  "description": "M3 Max Chip",
+  "price": 14999.00,
+  "producerId": 1,
+  "attributes": {
+    "RAM": "36GB",
+    "Disk": "1TB SSD",
+    "Keyboard": "US",
+    "Color": "Space Black"
+  }
+}
+
+### Test Error - Non-existent Producer (Should return 404/500)
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Ghost Laptop",
+  "price": 100,
+  "producerId": 999,
+  "attributes": {}
+}
+
+### 3. Get All Products
+GET http://localhost:8080/api/products
+
+### 4. Search Products by Name
+GET http://localhost:8080/api/products/search?name=MacBook
+
+### 5. Update Product (Change attributes)
+PUT http://localhost:8080/api/products/1
+Content-Type: application/json
+
+{
+  "name": "MacBook Pro 16",
+  "description": "M3 Max Chip - Updated",
+  "price": 13999.00,
+  "producerId": 1,
+  "attributes": {
+    "RAM": "64GB",
+    "Color": "Silver"
+  }
+}
+
+### 6. Delete Product
+DELETE http://localhost:8080/api/products/1
