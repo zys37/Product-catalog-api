@@ -23,7 +23,7 @@ Content-Type: application/json
   }
 }
 
-### Test Error - Non-existent Producer (Should return 404/500)
+### Test Error - Non-existent Producer (Should return 404)
 POST http://localhost:8080/api/products
 Content-Type: application/json
 
